@@ -67,6 +67,10 @@ with tab1:
         filtered = filtered[filtered["Jurisdiction"] == jurisdiction]
     
     st.metric("Cases in current selection", len(filtered))
+
+if filtered.empty:
+    st.warning("No cases match the current filters.")
+    st.stop()
     
     filtered["Suspect Arrested"] = filtered["Arrested"].map({
         1: "Arrested",
