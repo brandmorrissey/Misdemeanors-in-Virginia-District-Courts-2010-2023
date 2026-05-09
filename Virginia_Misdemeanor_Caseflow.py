@@ -7,7 +7,7 @@ DATA_URL = "https://media.githubusercontent.com/media/brandmorrissey/Virginia_Mi
 
 @st.cache_data
 def load_data():
-    df = pd.read_csv(DATA_URL)
+    df = pd.read_csv(DATA_URL, low_memory=False)
     df.columns = df.columns.str.strip()
     df["OffenseMonth"] = pd.to_datetime(df["OffenseMonth"])
     return df
